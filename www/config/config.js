@@ -9,16 +9,20 @@
   angular.module('starter')
     .config(function($stateProvider,$urlRouterProvider)
     {
-      var navLogin = {
+     /* var navLogin = {
         templateUrl:'./components/nav-login/nav-login.html',
         controller:'nav_loginController',
         controllerAs:'nav_login'
-      }
+      }*/
 
       var navTool = {
         templateUrl:'./components/nav-tool/nav-tool.html',
         controller:'nav_toolController',
         controllerAs:'nav_tool'
+      }
+
+      var sideMenu = {
+        templateUrl:'./components/side-menu/side-menu.html',
       }
 
       $stateProvider.state('signin',{
@@ -34,7 +38,7 @@
       })
 
       .state('signup',{
-        url:'signup',
+        url:'/signup',
         views:{
           'main':{
             templateUrl:'./components/sign-up/sign-up.html',
@@ -45,7 +49,20 @@
         isAuthenticate:false
       })
 
-      /*.state('home',{
+       /* .state('dashboard',{
+          url:'/dashboard',
+          abstract: true,
+          views:{
+            'main':{
+              templateUrl:'./components/dashboard/dashboard.html',
+              controller:'dashboardController',
+              controllerAs:'dashboard'
+            }
+          },
+          isAuthenticate:true
+        })*/
+
+      .state('home',{
         url:'/home',
         views:{
           'nav':navTool,
@@ -58,21 +75,42 @@
         isAuthenticate:true
       })
 
-      .state('menu',{
-        url:'/menu',
+        .state('bloodRequirement',{
+          url:'/bloodrequirement',
+          views:{
+            'main':{
+              templateUrl:'./components/blood-requirement/blood-requirement.html',
+              controller:'bloodRequirementController',
+              controllerAs:'bloodRequirement'
+            }
+          },
+          isAuthenticate:true
+        })
+
+
+       /* .state('sideMenu',{
+          url:'/sidemenu',
+          views:{
+            'main':sideMenu
+          },
+          isAuthenticate:true
+        })
+*/
+      /*.state('side-menu',{
+        url:'/side-menu',
         views:{
           'nav':navTool,
           'main':{
-            templateUrl:'./components/menu/menu.html',
+            templateUrl:'./components/side-menu/side-side-menu.html',
             controller:'menuController',
-            controllerAs:'menu'
+            controllerAs:'side-menu'
           }
         },
         isAuthenticate:true
       })*/
 
 
-      $urlRouterProvider.otherwise('signin');
+      $urlRouterProvider.otherwise('bloodRequirement');
 
 
       })

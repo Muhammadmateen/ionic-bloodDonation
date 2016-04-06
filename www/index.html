@@ -14,6 +14,8 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="./lib/firebase/firebase.js"></script>
+    <script src="./lib/angularfire/dist/angularfire.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -21,24 +23,34 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
 
+    <!-------------------Configuration------------------->
+    <script src="./config/config.js"></script>
+
     <!-------------------Controllers------------------->
     <script src="./components/sign-in/sign-in.js"></script>
     <script src="./components/sign-up/sign-up.js"></script>
-    <script src="./components/menu/menu.js"></script>
+    <script src="components/side-menu/side-menu.js"></script>
     <script src="./components/home/home.js"></script>
+    <script src="./components/blood-requirement/blood-requirement.js"></script>
 
     <!-------------------Services------------------->
-
+    <script src="./services/userAuthData.js"></script>
+    <script src="./services/loader.js"></script>
+    <script src="./services/bloodGroupList.js"></script>
 
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <!--<ion-pane>
       <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar>
       <ion-content>
       </ion-content>
-    </ion-pane>
+    </ion-pane>-->
+
+  <ion-nav-view name='main'>
+  </ion-nav-view>
+
   </body>
 </html>

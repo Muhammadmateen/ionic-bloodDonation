@@ -1,0 +1,26 @@
+
+
+<ion-content>
+
+  <div class="list">
+    <label class="item item-input">
+      <input type="text" placeholder="First Name" ng-model="signup.user.firstName" required>
+    </label>
+    <label class="item item-input">
+      <input type="text" placeholder="Last Name" ng-model="signup.user.lastName" required>
+    </label>
+    <label class="item item-input">
+      <input type="email" placeholder="Email" ng-model="signup.user.email" required>
+    </label>
+      <select ng-model="signup.user.bloodGroup" required>
+        <option ng-repeat="blood in signup.bloodGroup">{{blood}}</option>
+      </select>
+    <label class="item item-input">
+      <input type="password" placeholder="Password" ng-model="signup.user.password" required>
+    </label>
+    <button class="button button-block button-positive" ng-click="signup.createUser()">
+      Sign Up
+    </button>
+  </div>
+
+</ion-content>

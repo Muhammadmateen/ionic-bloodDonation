@@ -1286,7 +1286,7 @@ function($rootScope, $state, $location, $window, $timeout, $ionicViewSwitcher, $
      * @description Sets options for the next view. This method can be useful to override
      * certain view/transition defaults right before a view transition happens. For example,
      * the {@link ionic.directive:menuClose} directive uses this method internally to ensure
-     * an animated view transition does not happen when a side menu is open, and also sets
+     * an animated view transition does not happen when a side side-menu is open, and also sets
      * the next view as the root of its history stack. After the transition these options
      * are set back to null.
      *
@@ -7423,7 +7423,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   };
 
   /**
-   * Toggle the left menu to open 100%
+   * Toggle the left side-menu to open 100%
    */
   self.toggleLeft = function(shouldOpen) {
     if (isAsideExposed || !self.left.isEnabled) return;
@@ -7442,7 +7442,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   };
 
   /**
-   * Toggle the right menu to open 100%
+   * Toggle the right side-menu to open 100%
    */
   self.toggleRight = function(shouldOpen) {
     if (isAsideExposed || !self.right.isEnabled) return;
@@ -7478,16 +7478,16 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   };
 
   /**
-   * @return {float} The amount the side menu is open, either positive or negative for left (positive), or right (negative)
+   * @return {float} The amount the side side-menu is open, either positive or negative for left (positive), or right (negative)
    */
   self.getOpenAmount = function() {
     return self.content && self.content.getTranslateX() || 0;
   };
 
   /**
-   * @return {float} The ratio of open amount over menu width. For example, a
-   * menu of width 100 open 50 pixels would be open 50% or a ratio of 0.5. Value is negative
-   * for right menu.
+   * @return {float} The ratio of open amount over side-menu width. For example, a
+   * side-menu of width 100 open 50 pixels would be open 50% or a ratio of 0.5. Value is negative
+   * for right side-menu.
    */
   self.getOpenRatio = function() {
     var amount = self.getOpenAmount();
@@ -7502,17 +7502,17 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   };
 
   /**
-   * @return {float} The percentage of open amount over menu width. For example, a
-   * menu of width 100 open 50 pixels would be open 50%. Value is negative
-   * for right menu.
+   * @return {float} The percentage of open amount over side-menu width. For example, a
+   * side-menu of width 100 open 50 pixels would be open 50%. Value is negative
+   * for right side-menu.
    */
   self.getOpenPercentage = function() {
     return self.getOpenRatio() * 100;
   };
 
   /**
-   * Open the menu with a given percentage amount.
-   * @param {float} percentage The percentage (positive or negative for left/right) to open the menu.
+   * Open the side-menu with a given percentage amount.
+   * @param {float} percentage The percentage (positive or negative for left/right) to open the side-menu.
    */
   self.openPercentage = function(percentage) {
     var p = percentage / 100;
@@ -7523,9 +7523,9 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
       self.openAmount(self.right.width * p);
     }
 
-    // add the CSS class "menu-open" if the percentage does not
+    // add the CSS class "side-menu-open" if the percentage does not
     // equal 0, otherwise remove the class from the body element
-    $ionicBody.enableClass((percentage !== 0), 'menu-open');
+    $ionicBody.enableClass((percentage !== 0), 'side-menu-open');
 
     self.content.setCanScroll(percentage == 0);
   };
@@ -7543,9 +7543,9 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
   */
 
   /**
-   * Open the menu the given pixel amount.
-   * @param {float} amount the pixel amount to open the menu. Positive value for left menu,
-   * negative value for right menu (only one menu will be visible at a time).
+   * Open the side-menu the given pixel amount.
+   * @param {float} amount the pixel amount to open the side-menu. Positive value for left side-menu,
+   * negative value for right side-menu (only one side-menu will be visible at a time).
    */
   self.openAmount = function(amount) {
     var maxLeft = self.left && self.left.width || 0;
@@ -7579,26 +7579,26 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
       rightShowing = false;
 
       if (amount > 0) {
-        // Push the z-index of the right menu down
+        // Push the z-index of the right side-menu down
         self.right && self.right.pushDown && self.right.pushDown();
-        // Bring the z-index of the left menu up
+        // Bring the z-index of the left side-menu up
         self.left && self.left.bringUp && self.left.bringUp();
       }
     } else {
       rightShowing = true;
       leftShowing = false;
 
-      // Bring the z-index of the right menu up
+      // Bring the z-index of the right side-menu up
       self.right && self.right.bringUp && self.right.bringUp();
-      // Push the z-index of the left menu down
+      // Push the z-index of the left side-menu down
       self.left && self.left.pushDown && self.left.pushDown();
     }
   };
 
   /**
    * Given an event object, find the final resting position of this side
-   * menu. For example, if the user "throws" the content to the right and
-   * releases the touch, the left menu should snap open (animated, of course).
+   * side-menu. For example, if the user "throws" the content to the right and
+   * releases the touch, the left side-menu should snap open (animated, of course).
    *
    * @param {Event} e the gesture event to use for snapping
    */
@@ -12464,7 +12464,7 @@ IonicModule
       angular.isUndefined(attr.isEnabled) && attr.$set('isEnabled', 'true');
       angular.isUndefined(attr.width) && attr.$set('width', '275');
 
-      element.addClass('menu menu-' + attr.side);
+      element.addClass('side-menu side-menu-' + attr.side);
 
       return function($scope, $element, $attr, sideMenuCtrl) {
         $scope.side = $attr.side || 'left';
@@ -12530,7 +12530,7 @@ function($timeout, $ionicGesture, $window) {
     require: '^ionSideMenus',
     scope: true,
     compile: function(element, attr) {
-      element.addClass('menu-content pane');
+      element.addClass('side-menu-content pane');
 
       return { pre: prelink };
       function prelink($scope, $element, $attr, sideMenuCtrl) {
@@ -12551,7 +12551,7 @@ function($timeout, $ionicGesture, $window) {
           });
         }
 
-        // Listen for taps on the content to close the menu
+        // Listen for taps on the content to close the side-menu
         function onContentTap(gestureEvt) {
           if (sideMenuCtrl.getOpenAmount() !== 0) {
             sideMenuCtrl.close();
@@ -12695,11 +12695,11 @@ function($timeout, $ionicGesture, $window) {
           }),
           enableAnimation: function() {
             $scope.animationEnabled = true;
-            $element[0].classList.add('menu-animated');
+            $element[0].classList.add('side-menu-animated');
           },
           disableAnimation: function() {
             $scope.animationEnabled = false;
-            $element[0].classList.remove('menu-animated');
+            $element[0].classList.remove('side-menu-animated');
           },
           offsetX: 0
         };
@@ -12836,7 +12836,7 @@ IonicModule
         });
 
         $scope.$on('$destroy', function() {
-          $ionicBody.removeClass('menu-open', 'aside-open');
+          $ionicBody.removeClass('side-menu-open', 'aside-open');
         });
 
       }

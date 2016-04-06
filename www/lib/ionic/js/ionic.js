@@ -8206,9 +8206,9 @@ ionic.scroll = {
 'use strict';
 
   /**
-   * The side menu view handles one of the side menu's in a Side Menu Controller
+   * The side side-menu view handles one of the side side-menu's in a Side Menu Controller
    * configuration.
-   * It takes a DOM reference to that side menu element.
+   * It takes a DOM reference to that side side-menu element.
    */
   ionic.views.SideMenu = ionic.views.View.inherit({
     initialize: function(opts) {
@@ -8241,7 +8241,7 @@ ionic.scroll = {
   ionic.views.SideMenuContent = ionic.views.View.inherit({
     initialize: function(opts) {
       ionic.extend(this, {
-        animationClass: 'menu-animated',
+        animationClass: 'side-menu-animated',
         onDrag: function() {},
         onEndDrag: function() {}
       }, opts);
